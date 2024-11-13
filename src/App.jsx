@@ -17,10 +17,10 @@ function App() {
     });
 
     const changeAvatar = url => {
-        setUser(prevState => ({...prevState, avatar: url || prevState.avatar}));
+        setUser(prev => ({...prev, avatar: url || prev.avatar}));
     }
     const changeName = (newName) => {
-        setUser(prevState => ({...prevState, name: newName || prevState.name}));
+        setUser(prev => ({...prev, name: newName || prev.name}));
     }
 
     const changeFollowers = (action) => {
