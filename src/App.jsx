@@ -20,26 +20,48 @@ function App() {
         setUser(prevState => ({...prevState, avatar: url || prevState.avatar}));
     }
     const changeName = (newName) => {
-        setUser(prevState=>({...prevState,name: newName||prevState.name}));
+        setUser(prevState => ({...prevState, name: newName || prevState.name}));
     }
-    const changeCount = (stat,action) => {
-        switch (action) {
-            case '+':
-                setUser(prev=>prev+1);
 
+    const changeFollowers = (action) => {
+        switch (action) {
+            case "+":
+                setStats(prevState => ({...prevState, followers: prevState.followers + 1}))
+                break;
+            case  "-":
+                setStats(prevState => ({...prevState, followers: prevState.followers - 1}))
+                break;
         }
     }
 
-    return (
-        <div className={'app'}>
-            <TwitterContext.Provider value={{
-                user, stats, changeAvatar, changeName,
-            }}>
-                <Navigation/>
-                <Body/>
-            </TwitterContext.Provider>
-        </div>
-    )
-}
+    const changeFollowing = (action) => {
+        switch (action) {
+            case "+":
+                setStats(prevState => ({...prevState, following: prevState.following + 1}))
+                break;
+            case  "-":
+                setStats(prevState =>{({...prevState, following: prevState.following - 1})})
+                break;
+        }
+    }
+
+
+
+
+
+
+
+        return (
+            <div className={'app'}>
+                <TwitterContext.Provider value={{
+                    user, stats, changeAvatar, changeName, changeFollowers,changeFollowing,
+                }}>
+                    <Navigation/>
+                    <Body/>
+                </TwitterContext.Provider>
+            </div>
+        )
+    }
+
 
 export default App
