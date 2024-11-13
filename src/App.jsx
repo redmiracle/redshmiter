@@ -29,7 +29,7 @@ function App() {
                 setStats(prevState => ({...prevState, followers: prevState.followers + 1}))
                 break;
             case  "-":
-                setStats(prevState => ({...prevState, followers: prevState.followers - 1}))
+                setStats(prevState => ({...prevState, followers:prevState.followers>0?prevState.followers - 1:0}))
                 break;
         }
     }
@@ -40,7 +40,8 @@ function App() {
                 setStats(prevState => ({...prevState, following: prevState.following + 1}))
                 break;
             case  "-":
-                setStats(prevState =>{({...prevState, following: prevState.following - 1})})
+                setStats(prevState => ({...prevState, following:prevState.following>0?prevState.following - 1:0}))
+
                 break;
         }
     }
