@@ -12,8 +12,8 @@ function App() {
     });
 
     const [stats, setStats] = useState({
-        followers: 10,
-        following: 100
+        followers: 0,
+        following: 0
     });
 
     const changeAvatar = url => {
@@ -26,10 +26,10 @@ function App() {
     const changeFollowers = (action) => {
         switch (action) {
             case "+":
-                setStats(prevState => ({...prevState, followers: prevState.followers + 1}))
+                setStats(prev => ({...prev, followers: prev.followers + 1}))
                 break;
             case  "-":
-                setStats(prevState => ({...prevState, followers:prevState.followers>0?prevState.followers - 1:0}))
+                setStats(prev => ({...prev, followers:prev.followers>0?prev.followers - 1:0}))
                 break;
         }
     }
